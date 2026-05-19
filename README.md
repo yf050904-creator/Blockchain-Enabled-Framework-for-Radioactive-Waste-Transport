@@ -1,2 +1,70 @@
-# Blockchain-Enabled-Framework-for-Radioactive-Waste-Transport
-Blockchain-Enabled Framework for Radioactive Waste Transport Using Python Simulation and Hyperledger Fabric Exploration
+## 放射性废物运输联盟区块链（Python 模拟版）
+
+这是一个用 **纯 Python** 编写的、用于演示联盟区块链（参考 Hyperledger Fabric 架构思路）的简化系统，场景为放射性废物运输监管。
+
+### 功能概述
+
+- **IoT 数据模拟并上链**
+  - 自动生成包含 `Container ID`、辐射值、GPS 坐标、时间戳等字段的监测数据。
+  - 以交易形式写入区块链结构（`radiation_chain.py` 内部实现简化账本）。
+- **多监管者背书（类似 Fabric 背书策略）**
+  - 定义两个监管机构 `RegulatorA` 和 `RegulatorB`。
+  - 每一条 IoT 数据上链前，必须同时获得这两个监管机构的“背书”，否则会抛出异常，视为背书不足，不能上链。
+- **不可篡改性与完整性校验演示**
+  - 支持对整条链进行哈希校验，检查：
+    - 区块自身哈希是否与内容匹配；
+    - 区块的 `previous_hash` 是否指向上一个区块的哈希。
+  - 提供 `tamper_with_block` 方法，模拟对某个区块内数据的“恶意篡改”，但不更新区块哈希。
+  - 再次执行校验时会检测到哈希不一致，从而报警。
+
+### 环境要求
+
+- Python 版本：**3.9+**（推荐 3.10 / 3.11）
+- 操作系统：Windows / macOS / Linux 均可。
+
+### 安装依赖
+
+本示例仅使用 **标准库**，`requirements.txt` 中没有必须安装的三方包：
+
+```bash
+pip install -r requirements.txt
+```
+
+你也可以直接跳过这一步，直接运行。
+
+### 运行演示
+
+在项目根目录（包含 `radiation_chain.py` 的目录）执行：
+
+```bash
+python radiation_chain.py
+```
+
+你将看到以下几个阶段的输出：
+
+1. **步骤 1：IoT 模拟数据上链**
+   - 生成多条模拟监测数据。
+   - 显示每条交易的辐射值、GPS 坐标以及背书机构。
+2. **步骤 2：链完整性校验**
+   - 检查当前账本的区块哈希与前后连接关系。
+3. **步骤 3：模拟一次数据篡改**
+   - 将某个区块中的辐射值强行改为异常值（例如 999.9），但不更新区块哈希。
+4. **步骤 4：再次校验并检测篡改**
+   - 输出检测到的哈希不一致错误，用于说明区块链的防篡改特性。
+5. **步骤 5：按容器 ID 查询历史**
+   - 输出指定容器在本次运输任务中的所有历史监测记录。
+
+### 如何进一步贴近 Hyperledger Fabric
+
+当前代码是一个**纯 Python 的教学/研究型模拟**，用于帮助理解：
+
+- 联盟内多组织（生产方、运输方、多个监管机构等）的角色划分；
+- 多监管者背书策略的效果；
+- 区块链哈希链如何帮助发现历史数据被篡改。
+
+如果你想进一步对接真实的 Hyperledger Fabric，可以考虑：
+
+- 使用 Python 代码作为 **客户端/IoT 侧**，通过 SDK 或 REST 网关调用真实 Fabric 网络；
+- 使用 Python 合约框架（如 fabric-contract-api-python）改写为在 Peer 上运行的智能合约；
+- 用本示例的类结构作为链码和应用层的原型，然后逐步替换为真实 Fabric 组件。
+

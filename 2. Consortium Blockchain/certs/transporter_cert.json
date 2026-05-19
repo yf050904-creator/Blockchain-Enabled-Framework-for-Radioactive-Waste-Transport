@@ -1,0 +1,11 @@
+{
+"payload": {
+"sub": "transporter",
+"role": "TRANSPORTER",
+"org_id": "TransporterOrg",
+"pub": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnExOfeaNk3B8/1Uf8g35\nXm8Ft3S9UecH5xQ2b9lEldf+EfjbxTTegIm4V2jAVnp5JDYJbVSuqJ7TFMV9Th+8\ncMH+TnNTt2ybIlA4f8RBv33iziTM7eCUI692ac+nDQAfLLHYfqt8fz4OS5FOcYvw\nkLWBS5Q5aPEVvc6thGM1Tp9b+tWUz8IQgsTdR38x1aI1JG5ENZswsBqmiQowWUaQ\naRtW4epMt0uTFqhOdbkjNwb5zmSvmqMQxv/fHLG0AeWZWmN3m3Uz3NDAJs6S5n0y\nAxjoUNs/5DvkqDifPA09nJCt1pmfmr/gqLFBWlN8IA4cZRQIFx26qlh13089/RoG\nQQIDAQAB\n-----END PUBLIC KEY-----\n",
+"iat": 1773719867.743217,
+"exp": 2089079867.743217
+},
+"signature_b64": "gKL2TuqsWk3wn8GVeTZmXo5UJrDsmeRcVQTVOpGYVzhL5ZBQ/97XDXvn9LHixqnvon6aRf2rvVQrkBj+njx5Vh6l8xN2gWZlphZf5x0vRporZSwALyMba8/3VatMgjqDXRUGWGcNA8m0ibnzBOHWMWtGIrJSiFr9jfGB7wjLEqJ8WJ+yyiyFD0VKc2wWwIJYS2htyLcX33nxzqEdZBkpT8TVFOZqFRxMzYjyy71GQBgu76ySozwH8kwopKHGoqq2WBGGzcsEUbg2j7l7jNimYS6qbTa37fqVc3kctH8muc/BqJGR4QTLSGUTifi9MilTO+1rBTos5dbauKTlviDIfQ=="
+}
